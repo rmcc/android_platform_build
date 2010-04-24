@@ -47,10 +47,10 @@ console_state == 1 {
 
 END {
     failed = 0;
-    if (fixed_remount != 1) {
-        print "ERROR: no match for remount line" > "/dev/stderr";
-        failed = 1;
-    }
+    #if (fixed_remount != 1) {
+    #    print "ERROR: no match for remount line" > "/dev/stderr";
+    #    failed = 1;
+    #}
     if (console_state != 2) {
         print "ERROR: no match for console lines" > "/dev/stderr";
         failed = 1;
