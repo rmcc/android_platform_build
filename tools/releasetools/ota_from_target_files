@@ -375,6 +375,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
 
   script.ShowProgress(0.5, 0)
 
+  script.RunBackup("backup")
+
   if OPTIONS.wipe_user_data:
     script.FormatPartition("userdata")
 
@@ -398,6 +400,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
   common.CheckSize(boot_img.data, "boot.img")
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
   script.ShowProgress(0.2, 0)
+
+  script.RunBackup("restore")
 
   script.ShowProgress(0.2, 10)
   script.WriteRawImage("boot", "boot.img")
